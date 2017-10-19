@@ -1,0 +1,34 @@
+.box-comofunciona {
+	.ico-comofunciona {
+		margin-top: 55px;
+
+		img {
+			display: block;
+			margin: 0 auto 30px;
+		}
+
+		h4 {
+			//max-width: 300px;
+		}
+
+		p {
+			//max-width: 300px;
+			display: block;
+			margin-top: 20px;
+		}
+	}
+
+	.metodologia {
+		margin-top: 90px;
+
+		h2 {
+			margin-bottom: 45px;
+		}
+
+		p {
+			font-size: ($font-size+.6);
+			line-height: ($font-size+.6)+.3;
+			margin-bottom: 35px;
+		}
+	}
+}

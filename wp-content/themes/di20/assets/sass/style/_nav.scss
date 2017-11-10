@@ -33,7 +33,7 @@
 					width: 0;
 					left: 0;
 					display: block;
-					background-color: $cinza;
+					background-color: $cinza-escuro;
 					margin: 0 auto;
 					//box-shadow: 1px 1px 1px #000000;
 					@include animacao();
@@ -42,7 +42,7 @@
 
 			&:hover, &.active {
 				> a {
-					color: $cinza;
+					color: $cinza-escuro;
 
 					&:after {
 						width: 100%;
@@ -268,6 +268,44 @@
 
 			span, span:before, span:after {
 				background-color: $vermelho;
+			}
+		}
+	}
+}
+
+body {
+	&.page-id-79 {
+		.nav ul li.menu-startups {
+			> a {
+				color: $cinza-escuro;
+
+				&:after {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	&.page-id-118 {
+		.nav ul li.menu-equipe {
+			> a {
+				color: $cinza-escuro;
+
+				&:after {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	&.category {
+		.nav ul li.menu-news {
+			> a {
+				color: $cinza-escuro;
+
+				&:after {
+					width: 100%;
+				}
 			}
 		}
 	}

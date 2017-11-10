@@ -29,9 +29,10 @@
 				color: #ffffff;
 				display: block;
 				padding: 0px;
-				width: 90%;
+				width: 100%;
 				max-width: $width;
-				margin: 0 auto;
+				margin: 0;
+				font-weight: $light;
 
 				strong {
 					color: #ffffff;
@@ -41,6 +42,26 @@
 					font-size: 3.125rem;
 					line-height: 3.78rem;
 					font-weight: $light;
+					display: table;
+
+					span {
+						display: table-cell;
+						vertical-align: middle;
+					}
+
+					.txt-slide {
+						color: #ffffff;
+						font-weight: $light;
+					}
+
+					.box-btn {
+						padding: 0 20px 0 180px;
+
+						span {
+							display: block;
+							min-width: 200px;
+						}
+					}
 				}
 
 				@media all and (max-width: 750px){
@@ -50,6 +71,48 @@
 					}
 				}
 			}
+		}
+
+		&.video {
+			position: relative;
+
+			.play {
+				position: absolute;
+				width: 100%;
+				top: 50%;
+				text-align: center;
+				margin-top: -12vh;
+				height: 24vh;
+
+				a {
+					text-decoration: none;
+					display: inline-block;
+					top: -19vh;
+					position: relative;
+				}
+
+				i {
+					font-size: 25vh;
+					color: $laranja;
+					opacity: .5;
+					position: relative;
+					z-index: 999;
+					display: block;
+					@include animacao;
+
+					&:hover {
+						opacity: 1;
+					}
+				}
+			}
+
+			video {
+				position: absolute;
+				top: 0;
+				left: 0;
+				min-width: 100%;
+				min-height: 100%;
+			}	
 		}
 	}
 
@@ -66,7 +129,7 @@
 			width: 25px;
 			position: relative;
 			z-index: 990;
-			@include animacao();
+			@include animacao;
 
 			&:hover {
 				opacity: .5;

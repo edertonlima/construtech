@@ -26,65 +26,51 @@
 			</div>
 		</div>
 
+	</div>
+</section>
+
+<section class="box-content box-comofunciona cinza">
+	<div class="container">
+
 		<div class="row">
-			<div class="col-9 metodologia">
-				<h2>Metodologia</h2>
-				<p>Trazemos a nossa expertise desenvolvida numa das empresas mais representativas do segmento para construir startups de tecnologia.</p>
-				<p>Damos apertura a colaboradores e empreendedores que como nós procura transformar a construção.</p>
+			<div class="col-10 metodologia">
+				<h2>Também investimos em Construtechs</h2>
+				<h4>Procuramos Startups que estejam desenvolvendo soluções para a cadeia da construção e mercado imobiliário. O que avaliamos?</h4>
 			</div>
 		</div>
 
-		<?php /* $page = get_page_by_path( 'sobre' ); ?>
-		<div class="list-post-home">
-			<h4><?php the_field('titulo_home',$page->ID); ?></h4>
-		</div>
+	</div>
+</section>
+
+<section class="box-content no-padding-top box-comofunciona">
+	<div class="container">
 
 		<div class="row">
-
-			<?php if( have_rows('areas_de_atuacao',$page->ID) ): ?>
-								
-				<?php while ( have_rows('areas_de_atuacao',$page->ID) ) : the_row(); ?>
-
-					<div class="col-4">				
-						<div class="item-areaatuacao">
-							<div class="icon-content">
-								<div class="icon">
-									<i class="fa fa-star-o" aria-hidden="true"></i>
-								</div>
-							</div>
-							<div class="desc_wrapper">
-								<h3><?php the_sub_field('titulo'); ?></h3>
-								<p><?php the_sub_field('texto'); ?></p>
-							</div>
-						</div>
-					</div>
-
-				<?php endwhile; ?>
-
-			<?php endif; ?>
-
-			<div class="home-sobre-nos">
-				<div class="col-6">
-					<p><strong><?php the_field('destaque_home',$page->ID); ?></strong></p>
-
-					<?php the_field('texto_home',$page->ID); ?>
-
-					<a href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="Leia mais" class="leia-mais">
-						<i class="fa fa-file-text-o" aria-hidden="true"></i>
-						Leia mais
-					</a>
-				</div>
-
-				<div class="col-6">
-
-					<?php 
-						$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), '' );
-					?>
-					<img src="<?php echo $imagem[0]; ?>" alt="Conheça um pouco sobre nós">
-				</div>
+			<div class="col-4 mar-left-1 ico-comofunciona">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-1.png">
+				<h4>Recrutamento Founders</h4>
+				<p>Buscamos pessoas com o espírito empreendedor, motivados a gerar impacto através da tecnologia, resolvendo problemas reais.</p>
 			</div>
 
-		</div> */ ?>
+			<div class="col-4 mar-left-2 ico-comofunciona">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-2.png">
+				<h4>Formamos um Time</h4>
+				<p>Juntos co-criamos, formamos um time, prototipamos soluções, validamos modelos de negócios escaláveis.</p>
+			</div>
+
+			<div class="col-4 mar-left-1 ico-comofunciona">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-1.png">
+				<h4>Recrutamento Founders</h4>
+				<p>Buscamos pessoas com o espírito empreendedor, motivados a gerar impacto através da tecnologia, resolvendo problemas reais.</p>
+			</div>
+
+			<div class="col-4 mar-left-2 ico-comofunciona">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-2.png">
+				<h4>Formamos um Time</h4>
+				<p>Juntos co-criamos, formamos um time, prototipamos soluções, validamos modelos de negócios escaláveis.</p>
+			</div>
+		</div>
+
 	</div>	
 </section>
 
@@ -92,21 +78,84 @@
 	<div class="container">
 
 		<h2>Construtechs</h2>
-		<h3>Em nosso portfólio</h3>
+		<h3><?php the_field('subtitulo',79); ?></h3>
+
+		<?php if( have_rows('portfolio',79) ): ?>
+			
+			<div class="owl-carousel owl-theme startups">
+				<?php while ( have_rows('portfolio',79) ) : the_row(); ?>
+					<a href="<?php the_sub_field('link',79); ?>" target="_blank" title="<?php the_sub_field('titulo',79); ?>" class="item">
+						<img src="<?php the_sub_field('imagem',79); ?>" alt="<?php the_sub_field('titulo',79); ?>">
+					</a>
+				<?php endwhile; ?>
+			</div>		
+
+		<?php endif; ?>
+
+	</div>	
+</section>
+
+<?php get_template_part( 'content-contato', 'page' ); ?>
+
+<section class="box-content">
+	<div class="container">
+
+		<h2>Construtechs</h2>
+		<h3>na mídia</h3>
+
+		<?php query_posts(
+			array(
+				'post_type' => 'na-midia',
+				'posts_per_page' => 12
+			)
+		); ?>
+
+		<div class="owl-carousel owl-theme na-midia">
+			<?php while ( have_posts() ) : the_post(); 
+				$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), '' ); ?>
+
+				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="item">
+					<img src="<?php echo $imagem[0]; ?>" alt="<?php the_title(); ?>">
+				</a>
+
+			<?php endwhile;
+			wp_reset_query(); ?>
+		</div>
 
 	</div>	
 </section>
 
 <?php get_footer(); ?>
 
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/owl.carousel.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-	jQuery(document).ready(function(){	    
-
-
-
+	jQuery('.owl-carousel.startups').owlCarousel({
+		loop: false,
+		center: false,
+		nav: false,
+		margin: 20,
+		responsive: {
+			500: {
+				items: 1
+			},
+			768: {
+				items: 3
+			}
+		}
 	});
 
-	jQuery(window).resize(function(){
-
-	});
+	jQuery('.owl-carousel.na-midia').owlCarousel({
+		loop: false,
+		center: false,
+		nav: false,
+		margin: 20,
+		responsive: {
+			500: {
+				items: 1
+			},
+			768: {
+				items: 4
+			}
+		}
+	}) 
 </script>

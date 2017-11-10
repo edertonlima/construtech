@@ -1,10 +1,6 @@
 <?php
-/**
- * @package WordPress
- * @subpackage My Web
- * @since My web Site 1.0
- **
- */
+
+$producao = false;
 
 /* HABILITAR / DESABILITAR */
 add_theme_support( 'post-thumbnails' );
@@ -12,19 +8,30 @@ add_theme_support( 'post-thumbnails' );
 // Unable admin bar
 add_filter('show_admin_bar', '__return_false');
 
-add_post_type_support( 'post', 'excerpt' );
 
-// remove itens padrões
+
+// remove w adiciona itens
 add_action( 'init', 'my_custom_init' );
 function my_custom_init() {
+	$post_types = get_post_types();
+	remove_post_type_support($post_type, 'comments');
+	remove_post_type_support($post_type, 'trackbacks');
+
+	//POST
 	//remove_post_type_support( 'post', 'editor' );
+	add_post_type_support( 'post', 'excerpt' );
+
+
+	//PAGE
 	//remove_post_type_support('page', 'editor');
 	remove_post_type_support( 'page', 'thumbnail' );
+	remove_post_type_support( 'page' , 'comments');
 }
 
 // REMOVE PARENT PAGE
 function remove_post_custom_fields() {
-	remove_meta_box( 'pageparentdiv' , 'page' , 'side' ); 
+	remove_meta_box( 'pageparentdiv' , 'page' , 'side' );
+	remove_menu_page('edit-comments.php');
 }
 add_action( 'admin_menu' , 'remove_post_custom_fields' );
 
@@ -67,27 +74,27 @@ function gera_url_encurtada($url){
 function change_post_label() {
     global $menu;
     global $submenu;
-    $menu[5][0] = 'Notícias';
-    $submenu['edit.php'][5][0] = 'Todas as notícias';
-    $submenu['edit.php'][10][0] = 'Adicionar notícia';
+    $menu[5][0] = 'Blog';
+    $submenu['edit.php'][5][0] = 'Todas';
+    $submenu['edit.php'][10][0] = 'Adicionar';
     echo '';
 }
 function change_post_object() {
     global $wp_post_types;
     $labels = &$wp_post_types['post']->labels;
-    $labels->name = 'Notícias';
-    $labels->singular_name = 'Notícia';
-    $labels->add_new = 'Adicionar notícia';
-    $labels->add_new_item = 'Adicionar notícia';
-    $labels->edit_item = 'Editar notícia';
-    $labels->new_item = 'Notícia';
-    $labels->view_item = 'Ver notícia';
-    $labels->search_items = 'Buscar notícia';
-    $labels->not_found = 'Nenhuma notícia encontrado';
-    $labels->not_found_in_trash = 'Nenhuma notícia encontrada na lixeira';
-    $labels->all_items = 'Todas as notícias';
-    $labels->menu_name = 'Notícias';
-    $labels->name_admin_bar = 'Notícias';
+    $labels->name = 'Blog';
+    $labels->singular_name = 'Blog';
+    $labels->add_new = 'Adicionar';
+    $labels->add_new_item = 'Adicionar';
+    $labels->edit_item = 'Editar';
+    $labels->new_item = 'Blog';
+    $labels->view_item = 'Visualizar';
+    $labels->search_items = 'Pesquisar';
+    $labels->not_found = 'Nenhum item encontrato';
+    $labels->not_found_in_trash = 'A lixeira está vazia';
+    $labels->all_items = 'Todos';
+    $labels->menu_name = 'Blog';
+    $labels->name_admin_bar = 'Blog';
 }
  
 add_action( 'admin_menu', 'change_post_label' );
@@ -136,7 +143,46 @@ function paginacao() {
         }
 }
 
-$producao = false;
+
+	/* POST TYPE */
+	function namidia_post_type(){
+		register_post_type('na-midia', array( 
+			'labels'            =>  array(
+				'name'          =>      __('Na Mídia'),
+				'singular_name' =>      __('Na Mídia'),
+				'all_items'     =>      __('Todos'),
+				'add_new'       =>      __('Adicionar'),
+				'add_new_item'  =>      __('Adicionar'),
+				'edit_item'     =>      __('Editar'),
+				'view_item'     =>      __('Visualizar'),
+				'search_items'  =>      __('Pesquisar'),
+				'no_found'      =>      __('Nenhum item encontrato'),
+				'not_found_in_trash' => __('A lixeira está vazia.')
+			),
+			'public'            =>  true,
+			'publicly_queryable'=>  true,
+			'show_ui'           =>  true, 
+			'query_var'         =>  true,
+			'show_in_nav_menus' =>  false,
+			'capability_type'   =>  'post',
+			'hierarchical'      =>  true,
+			'rewrite'=> [
+				'slug' => 'na-midia',
+				"with_front" => false
+			],
+			"cptp_permalink_structure" => "/%postname%/",
+			'menu_position'     =>  21,
+			'supports'          =>  array('title','editor','excerpt','thumbnail'),
+			'has_archive'       =>  true,
+			'menu_icon' => 'dashicons-universal-access'
+		));
+		flush_rewrite_rules();
+	}
+	add_action('init', 'namidia_post_type');
+	/* POST TYPE */
+
+
+
 if($producao){
 	add_action('admin_head', 'my_custom_fonts');
 
@@ -208,4 +254,5 @@ if($producao){
 	  ';
 	}
 }
+
 ?>

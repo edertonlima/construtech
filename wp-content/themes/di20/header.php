@@ -163,20 +163,28 @@
 
 			<nav class="nav">
 				<ul class="menu-principal">
-					<li class="menu-como-funciona">
-						<a href="<?php echo get_permalink(get_page_by_path('como-funciona')); ?>" title="COMO FUNCIONA">COMO FUNCIONA</a>
+					<li class="menu-startups">
+						<a href="<?php echo get_permalink(get_page_by_path('startups')); ?>" title="STARTUPS">STARTUPS</a>
 					</li>
 
 					<li class="menu-equipe">
 						<a href="<?php echo get_permalink(get_page_by_path('equipe')); ?>" title="EQUIPE">EQUIPE</a>
 					</li>
 
-					<li class="menu-startups">
-						<a href="<?php echo get_permalink(get_page_by_path('startups')); ?>" title="STARTUPS">STARTUPS</a>
+					<li class="menu-vagas">
+						<a href="<?php echo get_permalink(get_page_by_path('vagas')); ?>" title="VAGAS">VAGAS</a>
+					</li>
+
+					<li class="menu-ecosistema">
+						<a href="<?php echo get_permalink(get_page_by_path('ecosistema')); ?>" title="ECOSISTEMA">ECOSISTEMA</a>
+					</li>
+
+					<li class="menu-news">
+						<a href="<?php echo get_home_url(); ?>/blog" title="NEWS">NEWS</a>
 					</li>
 
 					<li class="menu-contato">
-						<a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" title="CONTATO">CONTATO</a>
+						<a href="#contato" class="scroll" title="CONTATO">CONTATO</a>
 					</li>
 				</ul>
 			</nav>
@@ -187,7 +195,7 @@
 	<!-- slide -->
 	<section class="box-content box-slide">
 		<div class="slide">
-			<div class="carousel slide" data-ride="carousel" data-interval="6000000" id="slide">
+			<div class="carousel slide" data-ride="carousel" data-interval="6000" id="slide">
 
 				<div class="carousel-inner" role="listbox">
 
@@ -195,26 +203,85 @@
 						$slide = 0;
 						while ( have_rows('slide') ) : the_row();
 
-							if(get_sub_field('imagem')){
+							if(get_sub_field('video')){
 								$slide = $slide+1; ?>
 
-								<div class="item <?php if($slide == 1){ echo 'active'; } ?>" style="background-image: url('<?php the_sub_field('imagem'); ?>');">
-									<div class="container">
+								<div class="item video <?php if($slide == 1){ echo 'active'; } ?>">
+									<video autoplay="true" loop="true" muted="true">
+										<source src="<?php the_sub_field('video'); ?>" type="video/mp4">
+									</video>
 
-										<div class="box-height">
-											<div class="box-texto">
+									<?php if(get_sub_field('youtube')){ ?>
+										<div class="play">
+											<a href="javascript:" target="" data-target="#lightbox">
+												<i class="fa fa-youtube-play" aria-hidden="true" rel="<?php the_sub_field('youtube'); ?>"></i>
+											</a>
+										</div>
+									<?php }else{ ?>
+										<div class="container">
+											<div class="box-height">
+												<div class="box-texto">
 
-												<?php if(get_sub_field('texto')){ ?>
-													<p class="texto"><?php the_sub_field('texto'); ?></p>
-												<?php } ?>
+													
+													<p class="texto">
+														<?php if(get_sub_field('titulo')){ ?>
+															<span class="txt-slide"><?php the_sub_field('titulo'); ?></span>
+														<?php } ?>
 
+														<span class="box-btn">
+															<?php if(get_sub_field('titulo_link')){ ?>
+																<a href="<?php the_sub_field('link'); ?>" title="<?php the_sub_field('titulo_link'); ?>" class="btn btn-slide">
+																	<?php the_sub_field('titulo_link'); ?>
+																</a>
+															<?php } ?>
+														</span>
+													</p>
+													
+
+												</div>
 											</div>
 										</div>
-									
-									</div>
+									<?php } ?>
 								</div>
 
-							<?php }
+							<?php }else{
+								if(get_sub_field('imagem')){
+									$slide = $slide+1; ?>
+
+									<div class="item <?php if($slide == 1){ echo 'active'; } ?>" style="background-image: url('<?php the_sub_field('imagem'); ?>');">
+
+										<?php if((get_sub_field('titulo')) or (get_sub_field('subtitulo'))){ ?>
+											
+											<div class="container">
+												<div class="box-height">
+													<div class="box-texto">
+
+														<p class="texto">
+															<?php if(get_sub_field('titulo')){ ?>
+																<span class="txt-slide"><?php the_sub_field('titulo'); ?></span>
+															<?php } ?>
+
+															<span class="box-btn">
+																<?php if(get_sub_field('titulo_link')){ ?>
+																	<a href="<?php the_sub_field('link'); ?>" title="<?php the_sub_field('titulo_link'); ?>" class="btn btn-slide">
+																		<?php the_sub_field('titulo_link'); ?>
+																	</a>
+																<?php }else{ ?>
+																	<span></span>
+																<?php } ?>
+															</span>
+														</p>
+														
+													</div>
+												</div>
+											</div>
+
+										<?php } ?>
+
+									</div>
+
+								<?php }
+							}
 
 						endwhile;
 					endif; ?>
@@ -236,3 +303,5 @@
 			</div>
 		</div>
 	</section>
+
+	<?php //$rows = get_field('slide'); var_dump($rows); ?>

@@ -31,6 +31,13 @@ body * {
 		padding-left: ($padding-container)/4;
 		padding-right: ($padding-container)/4;
 	}
+
+	.content-txt {
+		padding: 50px 100px 100px;
+		display: block;
+		@include clear();
+		@include box-sizing();
+	}
 }
 
 .row {
@@ -57,8 +64,18 @@ body * {
 		}
 	}
 
-	.col-4:nth-child(3n+1) {
+	.col-4:nth-child(4n+1):not([class*="mar-left-"]) {
 		@include clear;
+	}
+
+	.col-3:nth-child(4n+1):not([class*="mar-left-"]) {
+		@include clear;
+	}
+
+	@for $i from 1 through 12 {
+		.mar-left-#{$i} {
+			margin-left: $i*(100%/12);
+		}
 	}
 
 	@media all and (max-width: 1100px) {

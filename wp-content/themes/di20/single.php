@@ -1,22 +1,11 @@
 <?php get_header(); ?>
 
-		<div class="header-tit">
-			<div class="image-header" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/bg_header.jpg');"></div>
+	<?php
+	while ( have_posts() ) : the_post();
 
-			<h2><?php the_title(); ?></h2>
+		get_template_part( 'content', 'post' );
 
-			<ul class="breadcrumbs">
-				<li><a href="<?php echo get_home_url(); ?>" title="Home">Home</a></li>
-				<li><a href="<?php echo get_home_url(); ?>/noticias" title="Notícias">Notícias</a></li>
-				<li><strong><?php the_title(); ?></strong></li>
-			</ul>
-		</div>
-	</header>
-
-	<?php while ( have_posts() ) : the_post();
-
-		get_template_part( 'content', get_post_format() ); ?>
-
-	<?php endwhile; ?>
+	endwhile;
+	?>
 
 <?php get_footer(); ?>

@@ -56,7 +56,7 @@ button, input[type='submit'], .btn {
 	display: inline-block;
 	margin: 0 auto;
 	background-color: #ffffff;
-	border: 1px solid darken($azul-escuro, 5%);
+	border: 1px solid $azul-escuro;
 	cursor: pointer;
 	text-transform: uppercase;
 	border-radius: 5px;
@@ -93,6 +93,48 @@ button, input[type='submit'], .btn {
 
 		&:hover {
 			background-color: darken($azul, 10%);
+		}
+	}
+
+	&.ver-mais {
+		width: 70%;
+		max-width: 370px;
+		line-height: 100px;
+		height: 100px;
+		display: block;
+		padding: 0;
+		background-color: #ffffff;
+		border-color: $azul;
+		color: $azul;
+		font-weight: $regular;
+		margin: -50px auto 120px;
+
+		&:hover {
+			background-color: $azul;
+			color: #ffffff;
+		}
+	}
+
+	&.leia-mais {
+		width: auto;
+		display: block;
+		font-weight: $bold;
+		padding: 0;
+		background-color: #ffffff;
+		border-color: $azul-escuro;
+		color: $azul-escuro;
+		margin: 25px 0 0;
+		border-radius: 0;
+		width: 140px;
+		float: none;
+		line-height: 50px;
+		height: 50px;
+		font-size: 1rem;
+		text-transform: none;
+
+		&:hover {
+			background-color: $azul;
+			color: #ffffff;
 		}
 	}
 }

@@ -174,11 +174,108 @@ function paginacao() {
 			'menu_position'     =>  21,
 			'supports'          =>  array('title','editor','excerpt','thumbnail'),
 			'has_archive'       =>  true,
-			'menu_icon' => 'dashicons-universal-access'
+			'menu_icon' => 'dashicons-admin-media'
 		));
 		flush_rewrite_rules();
 	}
 	add_action('init', 'namidia_post_type');
+	/* POST TYPE */
+
+
+	/* POST TYPE */
+	function releases_post_type(){
+		register_post_type('releases', array( 
+			'labels'            =>  array(
+				'name'          =>      __('Releases'),
+				'singular_name' =>      __('Releases'),
+				'all_items'     =>      __('Todos'),
+				'add_new'       =>      __('Adicionar'),
+				'add_new_item'  =>      __('Adicionar'),
+				'edit_item'     =>      __('Editar'),
+				'view_item'     =>      __('Visualizar'),
+				'search_items'  =>      __('Pesquisar'),
+				'no_found'      =>      __('Nenhum item encontrato'),
+				'not_found_in_trash' => __('A lixeira está vazia.')
+			),
+			'public'            =>  true,
+			'publicly_queryable'=>  true,
+			'show_ui'           =>  true, 
+			'query_var'         =>  true,
+			'show_in_nav_menus' =>  false,
+			'capability_type'   =>  'post',
+			'hierarchical'      =>  true,
+			'rewrite'=> [
+				'slug' => 'releases',
+				"with_front" => false
+			],
+			"cptp_permalink_structure" => "/%postname%/",
+			'menu_position'     =>  21,
+			'supports'          =>  array('title','editor','excerpt'),
+			'has_archive'       =>  true,
+			'menu_icon' => 'dashicons-rss'
+		));
+		flush_rewrite_rules();
+	}
+	add_action('init', 'releases_post_type');
+	/* POST TYPE */
+
+
+	/* POST TYPE */
+	function ecosistema_post_type(){
+		register_post_type('ecosistema', array( 
+			'labels'            =>  array(
+				'name'          =>      __('Ecosistema'),
+				'singular_name' =>      __('Ecosistema'),
+				'all_items'     =>      __('Todos'),
+				'add_new'       =>      __('Adicionar'),
+				'add_new_item'  =>      __('Adicionar'),
+				'edit_item'     =>      __('Editar'),
+				'view_item'     =>      __('Visualizar'),
+				'search_items'  =>      __('Pesquisar'),
+				'no_found'      =>      __('Nenhum item encontrato'),
+				'not_found_in_trash' => __('A lixeira está vazia.')
+			),
+			'public'            =>  true,
+			'publicly_queryable'=>  true,
+			'show_ui'           =>  true, 
+			'query_var'         =>  true,
+			'show_in_nav_menus' =>  false,
+			'capability_type'   =>  'post',
+			'hierarchical'      =>  true,
+			'rewrite'=> [
+				'slug' => 'ecosistema',
+				"with_front" => false
+			],
+			"cptp_permalink_structure" => "/%ecosistema_taxonomy%/%postname%/",
+			'menu_position'     =>  21,
+			'supports'          =>  array('title','editor','excerpt','thumbnail'),
+			'has_archive'       =>  true,
+			'menu_icon' => 'dashicons-admin-site'
+		));
+		flush_rewrite_rules();
+	}
+	add_action('init', 'ecosistema_post_type');
+	function ecosistema_taxonomy() {  
+		register_taxonomy(  
+			'ecosistema_taxonomy',  
+			'ecosistema',        
+			array(
+				'label' => __( 'Categorias' ),
+				'rewrite'=> [
+					'slug' => 'ecosistema',
+					"with_front" => false
+				],
+				"cptp_permalink_structure" => "/%ecosistema_taxonomy%/",
+				'hierarchical'               => true,
+				'public'                     => true,
+				'show_ui'                    => true,
+				'show_admin_column'          => true,
+				'show_in_nav_menus'          => true,
+				'query_var' => true
+			) 
+		);  
+	}  
+	add_action( 'init', 'ecosistema_taxonomy');
 	/* POST TYPE */
 
 

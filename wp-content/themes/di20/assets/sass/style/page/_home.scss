@@ -49,6 +49,16 @@
 			max-width: 230px;
 		}
 
+		&.list-na-midia {
+			.cont-list {
+				h4 {
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+
+	.item:not(.list-na-midia) {
 		&:hover {
 			opacity: .5;
 		}
@@ -84,15 +94,17 @@
 	}
 
 	.border-img {
-		border: 2px solid $azul;
+		border: 2px solid $azul-escuro;
 		border-radius: 50%;
 		overflow: hidden;
-		width: 250px;
-		height: 250px;
+		width: 180px;
+		height: 180px;
+		margin: 0 auto;
+		display: block;
 
 		img {
-			min-width: 250px;
-			min-height: 250px;
+			min-width: 180px;
+			min-height: 180px;
 		}
 	}
 
@@ -109,6 +121,8 @@
 		font-size: 1.125rem;
 		line-height: 1.225rem;
 		margin-top: 10px;
+		height: 62px;
+		overflow: hidden;
 	}
 
 	.ico-link {
@@ -123,6 +137,17 @@
 			&:hover {
 				opacity: .5;
 			}
+		}
+	}
+
+	&.list-vagas {
+		h5 {
+			margin: 0;
+		}
+
+		p {
+			height: auto;
+			text-align: left;
 		}
 	}
 }

@@ -2,6 +2,8 @@
 	width: auto;
 	float: right;
 	margin-top: 35px;
+	position: relative;
+	z-index: 9999;
 
 	ul {
 
@@ -33,7 +35,7 @@
 					width: 0;
 					left: 0;
 					display: block;
-					background-color: $cinza-escuro;
+					background-color: #ffffff;
 					margin: 0 auto;
 					//box-shadow: 1px 1px 1px #000000;
 					@include animacao();
@@ -42,7 +44,7 @@
 
 			&:hover, &.active {
 				> a {
-					color: $cinza-escuro;
+					color: #ffffff;
 
 					&:after {
 						width: 100%;
@@ -273,40 +275,45 @@
 	}
 }
 
+@mixin menu-active {
+	> a {
+		color: #ffffff;
+		background-color: rgba(#ffffff,.2);
+
+		&:after {
+			width: 100%;
+		}
+	}
+}
+
 body {
 	&.page-id-79 {
 		.nav ul li.menu-startups {
-			> a {
-				color: $cinza-escuro;
-
-				&:after {
-					width: 100%;
-				}
-			}
+			@include menu-active;
 		}
 	}
 
 	&.page-id-118 {
 		.nav ul li.menu-equipe {
-			> a {
-				color: $cinza-escuro;
-
-				&:after {
-					width: 100%;
-				}
-			}
+			@include menu-active;
 		}
 	}
 
-	&.category {
-		.nav ul li.menu-news {
-			> a {
-				color: $cinza-escuro;
+	&.page-id-139 {
+		.nav ul li.menu-vagas {
+			@include menu-active;
+		}
+	}
 
-				&:after {
-					width: 100%;
-				}
-			}
+	&.category, &.single:not(.single-ecosistema) {
+		.nav ul li.menu-news {
+			@include menu-active;
+		}
+	}
+
+	&.post-type-archive-ecosistema, &.single-ecosistema {
+		.nav ul li.menu-ecosistema {
+			@include menu-active;
 		}
 	}
 }

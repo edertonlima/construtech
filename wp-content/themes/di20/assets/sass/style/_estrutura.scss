@@ -37,6 +37,26 @@ body * {
 		display: block;
 		@include clear();
 		@include box-sizing();
+
+		ul {
+			width: 100%;
+			display: block;
+			@include clear();
+
+			li {
+				width: 100%;
+				display: block;
+				color: $cor-txt;
+				font-size: 1.125rem;
+				line-height: 1.225rem;
+				font-weight: $light;
+				@include clear();
+
+				strong, em, span, b, i {
+					color: $cor-txt;
+				}
+			}
+		}
 	}
 }
 
@@ -111,6 +131,16 @@ body * {
 		z-index: 0;
 	}
 
+	&.no-slide {
+		height: 160px;
+		border-bottom: 1px solid $azul-escuro;
+		background-color: $azul;
+
+		.slide {
+			height: auto;
+		}
+	}
+
 	&.cinza {
 		background-color: $cinza;
 	}
@@ -128,6 +158,10 @@ body * {
 	&.border {
 		border: 1px solid $cinza2;
 		border-width: 1px 0;
+	}
+
+	&.no-padding {
+		padding: 0;
 	}
 }
 

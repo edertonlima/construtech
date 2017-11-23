@@ -3,26 +3,25 @@
 
 		<div class="row">
 			<div class="col-6">
-				<h3>Tem uma ideia de negócio ou uma startup no setor e busca um sócio para crescer? É investidor e acredita no potencial de um dos principais setores da economia?</h3>
+				<h3><?php the_field('texto_principal_contato',2); ?></h3>
 				<p class="text-contato">
-					<span>#MakeConstructionGreatAgain</span>
-					Se você se identifica com o nosso propósito, deixe seus contatos e vamos conversar!r.
+					<?php the_field('texto_secundario_contato',2); ?>
 				</p>
 			</div>
 
 			<div class="col-6">
 
-				<form>
+				<form class="contato">
 					<fieldset>
-						<input type="" name="nome" placeholder="Nome:">
+						<input type="text" id="nome" name="nome" placeholder="Nome:*">
 					</fieldset>
 
 					<fieldset>
-						<input type="" name="email" placeholder="E-mail:">
+						<input type="text" id="email" name="email" placeholder="E-mail:*">
 					</fieldset>
 
 					<fieldset>
-						<textarea name="mensagem" placeholder="Como podemos ajudar:"></textarea>
+						<textarea id="mensagem" name="mensagem" placeholder="Como podemos ajudar:*"></textarea>
 					</fieldset>
 
 					<fieldset>

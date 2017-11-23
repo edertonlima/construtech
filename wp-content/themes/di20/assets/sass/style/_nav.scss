@@ -21,7 +21,7 @@
 				height: 60px;
 				color: #ffffff;
 				font-weight: $regular;
-				padding: 0px 25px;
+				padding: 0px 20px;
 				text-decoration: none;
 				border-left: 1px solid #ffffff;
 				//text-shadow: 1px 1px 1px #000000;
@@ -125,7 +125,7 @@
 		}
 	}
 
-	@media all and (max-width: 1100px){
+	@media all and (max-width: 1340px){
 		height: 100vh;
 		position: fixed;
 		display: table;
@@ -134,7 +134,7 @@
 		left: 0;
 		top: -110vh;
 		z-index: 9999;
-		background-color: $vermelho;
+		background-color: $azul;
 
 		ul {
 			vertical-align: middle;
@@ -195,8 +195,12 @@
 	position: relative;
 	z-index: 99999;
 
-	@media all and (max-width: 1100px) {
+	@media all and (max-width: 1340px) {
 		display: block;
+	}
+
+	@media all and (max-width: 1100px) {
+		margin-top: 55px;
 	}
 
 	span {
@@ -220,7 +224,7 @@
 
 	&.active {
 		text-align: center;
-		margin-top: 0px;
+		margin-top: 50px;
 		position: fixed;
 		right: 55px;
 
@@ -260,7 +264,7 @@
 		}
 
 		span, span:before, span:after {
-			background-color: #6a6c74;
+			background-color: #ffffff;
 			height: 5px;
 			width: 40px;
 			@include animacao();
@@ -269,7 +273,7 @@
 		&:hover {
 
 			span, span:before, span:after {
-				background-color: $vermelho;
+				background-color: $azul;
 			}
 		}
 	}

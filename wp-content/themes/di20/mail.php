@@ -2,15 +2,12 @@
 
 	$nome = $_GET['nome'];
 	$email = $_GET['email'];
-	$telefone = $_GET['telefone'];
-	$assunto = $_GET['assunto'];
-	$email = $_GET['email'];
 	$mensagem = $_GET['mensagem'];
 
 	$nome_site = $_GET['nome_site'];
 	$para = $_GET['para'];
 
-	$email_remetente = $para;
+	$email_remetente = 'contato@itismyweb.co';
 
 
 	$headers = "MIME-Version: 1.0" . "\r\n";
@@ -26,8 +23,6 @@
 	$conteudo .= '<p>';
 	$conteudo .= '<strong>Nome:</strong> '.$nome;
 	$conteudo .= '<br><strong>E-mail:</strong> '.$email;
-	$conteudo .= '<br><strong>Telefone:</strong> '.$telefone;
-	$conteudo .= '<br><strong>Assunto:</strong> '.$telefone;
 	$conteudo .= '<br><strong>Mensagem:</strong> '.$mensagem;
 	$conteudo .= '</p>';
 	if(mail($para, "Contato, Fale Conosco", $conteudo, $headers, "-f$email_remetente")){

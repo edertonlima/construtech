@@ -4,7 +4,7 @@
 	<div class="container">
 
 		<h2>Ecosistema</h2>
-		<h3>#MakeConstructionGreatAgain</h3>	
+		<h3><?php the_field('subtitulo','option'); ?></h3>	
 
 		<div class="row">
 			<?php

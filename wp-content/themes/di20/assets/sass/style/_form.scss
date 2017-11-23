@@ -158,6 +158,28 @@ form {
 		&:first-child {
 			margin: 0;
 		}
+
+		&.erro {
+			input, textarea {
+				border-color: $vermelho;
+
+				&::-webkit-input-placeholder {
+					color: $vermelho;
+				}
+
+				&:-moz-placeholder {
+					color: $vermelho; 
+				}
+
+				&::-moz-placeholder {
+					color: $vermelho;
+				}
+
+				&:-ms-input-placeholder {  
+					color: $vermelho;
+				}
+			}
+		}
 	}
 }
 

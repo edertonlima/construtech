@@ -6,6 +6,8 @@
 	
 <div class="col-12 first-post ecosistema">
 	<div class="row">
+
+		<img src="<?php echo $imagem[0]; ?>" alt="<?php the_title(); ?>" class="col-6 img-esq">
 		
 		<div class="cont-list col-6">
 			<h5>
@@ -18,7 +20,7 @@
 			<a href="<?php the_permalink(); ?>" class="btn leia-mais" title="leia mais">leia mais</a>
 		</div>
 
-		<img src="<?php echo $imagem[0]; ?>" alt="<?php the_title(); ?>" class="col-6">
+		<img src="<?php echo $imagem[0]; ?>" alt="<?php the_title(); ?>" class="col-6 img-dir">
 
 	</div>
 </div>

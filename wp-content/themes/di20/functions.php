@@ -1,6 +1,10 @@
 <?php
 
-$producao = false;
+if(wp_get_current_user()->ID == 1){
+	$producao = false;
+}else{
+	$producao = true;
+}
 
 /* HABILITAR / DESABILITAR */
 add_theme_support( 'post-thumbnails' );
@@ -114,6 +118,12 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_sub_page(array(
 		'page_title' 	=> 'Configurações Gerais',
 		'menu_title'	=> 'Geral',
+		'parent_slug'	=> 'configuracoes-geral',
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Configurações Ecosistema',
+		'menu_title'	=> 'Ecosistema',
 		'parent_slug'	=> 'configuracoes-geral',
 	));
 }

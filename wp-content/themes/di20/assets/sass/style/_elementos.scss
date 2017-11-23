@@ -33,6 +33,10 @@ h2 {
 	font-weight: $light;
 	display: block;
 	color: #000000;
+
+	@media all and (max-width: 750px){
+		font-size: 3rem;
+	}
 }
 
 h3 {
@@ -46,6 +50,14 @@ h3 {
 		font-weight: $bold;
 		display: block;
 		color: $azul;
+	}
+
+	@media all and (max-width: 750px){
+		font-size: 1.8rem;
+
+		p {
+			font-size: 1.8rem;
+		}
 	}
 }
 

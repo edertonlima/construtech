@@ -3,28 +3,27 @@
 <section class="box-content box-comofunciona" id="goScrollOn">
 	<div class="container">
 
-		<h2>Como Funciona</h2>
-		<h3>Somos Venture Builders</h3>
+		<h2><?php the_field('titulo_comofunciona'); ?></h2>
+		<h3><?php the_field('subtitulo_comofunciona'); ?></h3>
 
-		<div class="row">
-			<div class="col-4 ico-comofunciona">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-1.png">
-				<h4>Recrutamento Founders</h4>
-				<p>Buscamos pessoas com o espírito empreendedor, motivados a gerar impacto através da tecnologia, resolvendo problemas reais.</p>
-			</div>
+		<?php if( have_rows('itens_comofunciona') ): ?>
+			
+			<div class="row">
+				<?php 
+					$count_itens = 0;
+					while ( have_rows('itens_comofunciona') ) : the_row(); 
+						$count_itens = $count_itens+1; ?>
 
-			<div class="col-4 ico-comofunciona">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-2.png">
-				<h4>Formamos um Time</h4>
-				<p>Juntos co-criamos, formamos um time, prototipamos soluções, validamos modelos de negócios escaláveis.</p>
-			</div>
+						<div class="col-4 <?php if($count_itens > 3){ echo 'mar-left-1'; } ?> ico-comofunciona">
+							<img src="<?php the_sub_field('imagem'); ?>">
+							<h4><?php the_sub_field('titulo'); ?></h4>
+							<p><?php the_sub_field('texto'); ?></p>
+						</div>
 
-			<div class="col-4 ico-comofunciona">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-3.png">
-				<h4>Investimos para Crescer</h4>
-				<p>Investimos no negócio para desenvolver produtos incríveis e trilhar o caminho do crescimento.</p>
+						<?php 
+							if($count_itens == 3){ ?>
+
 			</div>
-		</div>
 
 	</div>
 </section>
@@ -34,8 +33,8 @@
 
 		<div class="row">
 			<div class="col-10 metodologia">
-				<h2>Também investimos em Construtechs</h2>
-				<h4>Procuramos Startups que estejam desenvolvendo soluções para a cadeia da construção e mercado imobiliário. O que avaliamos?</h4>
+				<h2><?php the_field('titulo_destaque_comofunciona'); ?></h2>
+				<h4><?php the_field('texto_destaque_comofunciona'); ?></h4>
 			</div>
 		</div>
 
@@ -46,29 +45,17 @@
 	<div class="container">
 
 		<div class="row">
-			<div class="col-4 mar-left-1 ico-comofunciona">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-1.png">
-				<h4>Recrutamento Founders</h4>
-				<p>Buscamos pessoas com o espírito empreendedor, motivados a gerar impacto através da tecnologia, resolvendo problemas reais.</p>
-			</div>
 
-			<div class="col-4 mar-left-2 ico-comofunciona">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-2.png">
-				<h4>Formamos um Time</h4>
-				<p>Juntos co-criamos, formamos um time, prototipamos soluções, validamos modelos de negócios escaláveis.</p>
-			</div>
 
-			<div class="col-4 mar-left-1 ico-comofunciona">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-1.png">
-				<h4>Recrutamento Founders</h4>
-				<p>Buscamos pessoas com o espírito empreendedor, motivados a gerar impacto através da tecnologia, resolvendo problemas reais.</p>
-			</div>
 
-			<div class="col-4 mar-left-2 ico-comofunciona">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/como-funciona/ico-2.png">
-				<h4>Formamos um Time</h4>
-				<p>Juntos co-criamos, formamos um time, prototipamos soluções, validamos modelos de negócios escaláveis.</p>
-			</div>
+							<?php }
+						?>
+
+					<?php endwhile;
+				?>
+
+		<?php endif; ?>
+
 		</div>
 
 	</div>	

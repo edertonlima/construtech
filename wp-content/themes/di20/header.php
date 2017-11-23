@@ -101,7 +101,27 @@
 	jQuery.noConflict();
 
 	jQuery(document).ready(function(){
+		scroll_body = jQuery(window).scrollTop();
+		if(scroll_body > 400){
+			jQuery('.header').addClass('scroll_menu');
+		}
+	});	
 
+	jQuery(window).resize(function(){
+		if(jQuery(window).width() >= '1340px'){
+			jQuery('.menu-mobile').removeClass('active');
+			jQuery('.header').removeClass('active');
+			jQuery('.nav').css('top','-110vh');
+		}
+
+		if(jQuery('body').height() <= jQuery(window).height()){
+			jQuery('.footer').css({position: 'absolute', bottom: '0px'});
+		}else{
+			jQuery('.footer').css({position: 'relative'});
+		}
+	});
+
+	jQuery(window).load(function(){
 		jQuery('.menu-mobile').click(function(){
 			if(jQuery(this).hasClass('active')){
 				jQuery('.nav').css('top','-110vh');
@@ -114,22 +134,6 @@
 			}
 		});
 
-		if(jQuery('body').height() <= jQuery(window).height()){
-			jQuery('.footer').css({position: 'absolute', bottom: '0px'});
-		}else{
-			jQuery('.footer').css({position: 'relative'});
-		}
-
-		scroll_body = jQuery(window).scrollTop();
-		if(scroll_body > 400){
-			jQuery('.header').addClass('scroll_menu');
-		}
-	});	
-
-	jQuery(window).resize(function(){
-		jQuery('.menu-mobile').removeClass('active');
-		jQuery('.header').removeClass('active');
-		jQuery('.nav').css('top','-110vh');
 		if(jQuery('body').height() <= jQuery(window).height()){
 			jQuery('.footer').css({position: 'absolute', bottom: '0px'});
 		}else{
@@ -206,7 +210,7 @@
 		<!-- slide -->
 		<section class="box-content box-slide">
 			<div class="slide">
-				<div class="carousel slide" data-ride="carousel" data-interval="6000" id="slide">
+				<div class="carousel slide" data-ride="carousel" data-interval="600000" id="slide">
 
 					<div class="carousel-inner" role="listbox">
 

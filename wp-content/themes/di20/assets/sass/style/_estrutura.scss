@@ -57,6 +57,14 @@ body * {
 				}
 			}
 		}
+
+		@media all and (max-width: 750px){
+			padding: 50px 40px 50px;
+		}
+
+		@media all and (max-width: 500px){
+			padding: 50px 5px 50px;
+		}
 	}
 }
 

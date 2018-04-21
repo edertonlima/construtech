@@ -154,3 +154,18 @@
 		top: -30px;
 	}
 }
+
+.idiomas {
+	margin: 10px;
+	float: right;
+	@include clear;
+
+	a {
+		color: #ffffff;
+		@include animacao;
+
+		&:hover {
+			color: $azul;
+		}
+	}
+}
